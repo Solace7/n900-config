@@ -45,7 +45,7 @@ foreground = ${colors.foreground}
 line-size = 0
 line-color = ${colors.foreground}
 
-modules-right = alsa
+modules-right = batterycapacity alsa
 modules-center = mpd
 modules-left = memory
 
@@ -214,7 +214,7 @@ label-connected-background = ${colors.background-alt}
 label-disconnected-foreground=${colors.foreground-alt}
 label-disconnected-background = ${colors.background-alt}
 format-disconnected = <label-disconnected>
-label-disconnected = DOWN
+label-disconnected =
 label-disconnected-padding = 1
 
 [module/ethernet]
@@ -234,14 +234,6 @@ format-disconnected = <label-disconnected>
 label-disconnected =
 label-disconnected-padding = 1
 
-[module/cpugov]
-type = custom/script
-exec = cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
-interval = 90
-format-padding = 1
-format-background = ${colors.background-alt}
-format-foreground = ${colors.foreground-alt}
-
 [module/date]
 type = internal/date
 interval = 1
@@ -249,8 +241,8 @@ interval = 1
 date =%a %b %d §
 date-alt = " %Y-%m-%d"
 
-time = %l:%M:%S %P
-time-alt = %H:%M:%S
+time = %H:%M:%S
+time-alt = %H:%M:%S %P
 
 format-background = ${colors.background-alt}
 format-foreground = ${colors.foreground-alt}
@@ -285,8 +277,7 @@ label-muted = sound muted
 
 [module/battery]
 type = internal/battery
-battery = BAT0
-adapter = AC0
+battery = bq2700-0
 full-at = 98
 
 format-charging-background = ${colors.background-alt}
@@ -325,6 +316,16 @@ animation-charging-2 = 
 animation-charging-3 = 
 animation-charging-4 = 
 animation-charging-framerate = 750
+
+[module/batterycapacity]
+type = custom/script
+format = <label>
+exec = cat /sys/class/power_supply/bq27200-0/capacity
+label = POW %output%%
+interval = 90
+format-padding = 1
+format-background = ${colors.background-alt}
+format-foreground = ${colors.foreground-alt}
 
 ;---------------------------------------------------------
 ;											 POWERLINE SYMBOLS 

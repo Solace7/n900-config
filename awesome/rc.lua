@@ -28,10 +28,10 @@ env:init({ theme = "gruvbox" })
 
 -- Table of layouts to cover with awful.layout.inc, order matters.
 awful.layout.layouts = {
+    awful.layout.suit.max,
     awful.layout.suit.tile,
     awful.layout.suit.tile.top,
 	awful.layout.suit.fair,
-    awful.layout.suit.max,
 }
 
 redflat.layout.map.notification = true
@@ -117,7 +117,7 @@ local cpugovernor = widgets.cpugovernor
 -- Memory Widget
 local memwidget = lain.widget.mem({
     settings = function()
-        widget:set_markup(round((mem_now.used/1024),2).. "GB/" .. round(mem_now.total/1024,2) .. "GB")
+        widget:set_markup(mem_now.used.. "MB/" .. mem_now.total .. "MB")
     end
 })
 
@@ -137,10 +137,6 @@ local volwidget = widgets.volume
 local wifi_icon = widgets.wifi_icon
 local eth_icon = widgets.eth_icon
 --}}
-
--- Pacman need update widgets
--- if [[ pacman -Qu | grep -v ignored  | wc -l ]] > 0
---local watchpacman = widgets.watchpacman
 
 -- Systemtray widget
 local systemtray = wibox.widget.systray()
@@ -255,13 +251,6 @@ env.wallpaper(s)
 end)
 -- }}}
 
--- {{{ Mouse bindings
-root.buttons(gears.table.join(
-    awful.button({ }, 4, awful.tag.viewnext),
-    awful.button({ }, 5, awful.tag.viewprev)
-))
--- }}}
-
 --------------------------
 -------{{KEYBINDS}}-------
 --------------------------
@@ -271,11 +260,6 @@ globalkeys = gears.table.join(
               {description="show help", group="awesome"}),
     awful.key({ env.mod,           }, "Escape", awful.tag.history.restore,
               {description = "go back", group = "tag"}),
-    awful.key({ env.mod, "Control" }, "space", naughty.destroy_all_notifications,
-              {description = "destroy notification", group = "awesome"}),
---    awful.key({ "Control",         }, "Print", function() awful.spawn("scrot -s -e ' mv $f ~/Pictures/Screenshots/") end,
-             -- {description = "take a screenshot",   group = "awesome"}),
-
     --Switching Windows
     awful.key({ env.mod,           }, "Right",
         function ()

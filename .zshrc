@@ -5,19 +5,8 @@ export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOQUIT=true
 export ZSH_TMUX_AUTOCONNECT=false
 
-#if which tmux >/dev/null 2>&1; then
-#    test -z ${TMUX} && tmux
-#    #attatch to sessions that might exist on exit
-#    while test -z ${TMUX}; do
-#        tmux attach || break
-#    done
-#fi
-
-ZSH_THEME="gnzh"
-#ZSH_THEME="clean"
-#ZSH_THEME="duellj"
+ZSH_THEME="duellj"
 #ZSH_THEME="af-magic"
-#ZSH_THEME="takashiyoshida"
 #ZSH_THEME="nanotech"
 
 plugins=(

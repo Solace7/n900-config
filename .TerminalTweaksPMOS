@@ -2,7 +2,7 @@
 #Terminal Tweaks
 
 #Package Handling
-alias search="apk search -d"
+alias search="apk search -dv"
 alias inst="sudo apk add"
 alias update="sudo apk update"
 alias remp="sudo apk del"

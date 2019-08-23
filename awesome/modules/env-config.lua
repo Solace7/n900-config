@@ -29,7 +29,7 @@ function env:init(args)
 	-- environment vars
 	self.terminal = args.terminal or "urxvt"
     self.editor = args.editor or "vim"
-	self.mod = args.mod or "Mod4"
+	self.mod = args.mod or "Shift"
 	self.fm = args.fm or "caja"
 	self.home = os.getenv("HOME")
     self.config = gears.filesystem.get_xdg_config_home()

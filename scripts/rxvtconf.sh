@@ -10,7 +10,7 @@ echo "URxvt.secondaryWheel: 1" | xrdb -merge
 
 echo "URxvt.depth: 32" | xrdb -merge
 echo "urxvt*background: rgba:0f00/0f00/0f00/c800" | xrdb -merge
-echo "URxvt.font: xft:Fantasque Sans Mono:size=11" | xrdb -merge
+echo "URxvt.font: xft:Space Mono for Powerline:size=11" | xrdb -merge
 echo "URxvt.scrollBar: false" | xrdb -merge
 
 echo "URxvt.clipboard.autocopy: true" | xrdb -merge

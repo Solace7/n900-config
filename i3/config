@@ -26,7 +26,7 @@ mode "mpd" {
         bindsym Up exec mpc vol +2
         bindsym Down exec mpc vol -2
 
-        bindsym n exec st -f "Liberation Mono-12" -e ncmpcpp; mode "default"
+        bindsym n exec urxvt -e ncmpcpp; mode "default"
         bindsym q mode "command"
 }
 
@@ -66,18 +66,7 @@ bindsym XF86PowerOff exec --no-startup-id sudo pm-suspend
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-#bar {
-#        position top
-#        status_command exec ~/.config/i3/bq27200_status.sh
-#        colors {
-#                background #000000
-#                statusline #ffffff
-#                separator #009900
-#                focused_workspace #009900 #009900 #ffffff
-#                inactive_workspace #003300 #003300 #dddddd
-#                urgent_workspace #990000 #990000 #ffffff
-#        }
-#}
+
 #Replaced i3bar with polybar
 exec_always --no-startup-id $HOME/.config/scripts/bin/res-polybar
 
@@ -95,7 +84,7 @@ exec --no-startup-id conky --daemonize
 ########################
 
 # Autostart
-exec_always --no-startup-id $HOME/.config/scripts/rxvtconf.sh
+exec_always --no-startup-id $HOME/bin/urxvt_configure
 
 #Font for window titles.
 font pango: Hack 10
