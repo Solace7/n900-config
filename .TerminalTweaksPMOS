@@ -1,0 +1,27 @@
+#!/bin/bash
+#Terminal Tweaks
+
+#Package Handling
+alias search="apk search -d"
+alias inst="sudo apk add"
+alias update="sudo apk update"
+alias remp="sudo apk del"
+alias upgrade="sudo apk upgrade && notify-send 'System Package Upgrade Complete'"
+alias cache-upgrades="sudo apk update && sudo apk fetch $(apk info)"
+alias offline-upgrade="sudo apk upgrade --no-network"
+
+alias tweaksedit="vim $HOME/.TerminalTweaksPMOS"
+alias calc="gcalccmd"
+alias srczsh="source ~/.zshrc"
+alias tattach="tmux attach -t"
+alias netscan="nmap -sP"
+
+alias l="ls --color=auto"
+alias lg="ls -g"
+alias ll="ls -l"
+alias la="ls -a"
+alias ls="ls --color=auto"
+
+alias rm="rm -i"
+
+alias ssh="TERM=screen-256color ssh"

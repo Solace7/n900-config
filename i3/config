@@ -1,0 +1,108 @@
+new_window 1pixel
+
+workspace_layout tabbed
+
+mode "workspace" {
+        bindsym a workspace 1
+        bindsym s workspace 2
+        bindsym d workspace 3
+        bindsym f workspace 4
+        bindsym g workspace 5
+        bindsym Left workspace prev
+        bindsym Right workspace next
+        bindsym Shift+Left move container to workspace prev
+        bindsym Shift+Right move container to workspace next
+        bindsym q mode "command"
+}
+
+# Control the music player daemon. Keybindings are roughly the same as in
+# the ncmpcpp client.
+mode "mpd" {
+        bindsym p exec mpc toggle
+        bindsym s exec mpc stop
+
+        bindsym Left exec mpc prev
+        bindsym Right exec mpc next
+        bindsym Up exec mpc vol +2
+        bindsym Down exec mpc vol -2
+
+        bindsym n exec st -f "Liberation Mono-12" -e ncmpcpp; mode "default"
+        bindsym q mode "command"
+}
+
+mode "command" {
+        bindsym t exec urxvt; mode "default"
+        bindsym d exec rofi -show run; mode "default"
+        bindsym q mode; "default"
+        bindsym k kill; mode "default"
+        bindsym b exec netsurf
+        bindsym r restart
+
+        bindsym Left focus left
+        bindsym Right focus right
+        bindsym Up focus up
+        bindsym Down focus down
+
+        bindsym Shift+Left move left
+        bindsym Shift+Right move right
+        bindsym Shift+Up move up
+        bindsym Shift+Down move down
+
+        bindsym h split h
+        bindsym v split v
+
+        bindsym w mode "workspace"
+        bindsym m mode "mpd"
+}
+
+# Enter command mode
+bindsym Shift+space mode "command"
+
+# This is the slidey button on the side
+bindsym XF86ScreenSaver exec --no-startup-id lock.sh
+
+# Pressing the power button suspends the device
+bindsym XF86PowerOff exec --no-startup-id sudo pm-suspend
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+#bar {
+#        position top
+#        status_command exec ~/.config/i3/bq27200_status.sh
+#        colors {
+#                background #000000
+#                statusline #ffffff
+#                separator #009900
+#                focused_workspace #009900 #009900 #ffffff
+#                inactive_workspace #003300 #003300 #dddddd
+#                urgent_workspace #990000 #990000 #ffffff
+#        }
+#}
+#Replaced i3bar with polybar
+exec_always --no-startup-id $HOME/.config/scripts/bin/res-polybar
+
+# Wallpaper
+exec_always --no-startup-id feh --bg-fill /usr/share/wallpapers/postmarketos.jpg
+
+# Hide mouse cursor
+exec --no-startup-id unclutter-xfixes --fork
+
+# Display various information on desktop (see conky config)
+exec --no-startup-id conky --daemonize
+
+########################
+##Greyowl Configuration##
+########################
+
+# Autostart
+exec_always --no-startup-id $HOME/.config/scripts/rxvtconf.sh
+
+#Font for window titles.
+font pango: Hack 10
+
+#window colors
+#                        border                          background                  text              indicator
+client.focused           #3f3f3f                         #2f2f2f     #e5e5e5           #ffd700
+client.unfocused         #2f2f2f                         $background_unfocused     #e5e5e5           #ffd700
+client.focused_inactive  #3f3f3f                         #3f3f3f                     #e5e5e5           #ffd700
+client.urgent            #1f1f1f                         #ffd700                     #1f1f1f           #ffd700

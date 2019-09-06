@@ -1,0 +1,39 @@
+#! /usr/bin/env sh
+
+# Source VOLUME_CONTROL_DEVICE
+if [ -f /tmp/volume_control_device ]; 
+	then
+		VOLUME_CONTROL_DEVICE=$(cat /tmp/volume_control_device)
+	else
+		VOLUME_CONTROL_DEVICE="NO_DEVICE"
+fi
+
+function setVolume {
+	if [ "$VOLUME_CONTROL_DEVICE" != "NO_DEVICE" ]; then
+		amixer -q sset "$VOLUME_CONTROL_DEVICE" $1
+	fi
+}
+
+function usage {
+	echo "usage: volume-up, volume-down, jack-out, speakers-out"
+}
+
+case $1 in
+	volume-up )
+		setVolume 1.5dB+
+		;;
+	volume-down )
+		setVolume 1.5dB-
+		;;
+	jack-out )
+		alsactl restore -f /var/lib/alsa/asound.state.headset
+		echo "TPA6130A2 Headphone" > /tmp/volume_control_device
+		;;
+	speakers-out )
+		alsactl restore -f /var/lib/alsa/asound.state.speakers
+		echo "PCM" > /tmp/volume_control_device
+		;;
+	* )
+		usage
+		;;
+esac
