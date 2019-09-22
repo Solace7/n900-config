@@ -71,7 +71,8 @@ bindsym XF86PowerOff exec --no-startup-id sudo pm-suspend
 exec_always --no-startup-id $HOME/.config/scripts/bin/res-polybar
 
 # Wallpaper
-exec_always --no-startup-id feh --bg-fill /usr/share/wallpapers/postmarketos.jpg
+#exec_always --no-startup-id feh --bg-fill /usr/share/wallpapers/postmarketos.jpg
+exec_always --no-startup-id feh --bg-fill $HOME/Wallpapers/pmos_gruv.png
 
 # Hide mouse cursor
 exec --no-startup-id unclutter-xfixes --fork
