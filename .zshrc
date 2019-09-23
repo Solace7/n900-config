@@ -5,8 +5,7 @@ export ZSH_TMUX_AUTOSTART=true
 export ZSH_TMUX_AUTOQUIT=true
 export ZSH_TMUX_AUTOCONNECT=false
 
-ZSH_THEME="duellj"
-#ZSH_THEME="af-magic"
+ZSH_THEME="af-magic"
 #ZSH_THEME="nanotech"
 
 plugins=(
