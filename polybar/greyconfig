@@ -17,7 +17,9 @@ screenchange-reload = true
 ;												COLORS
 ;---------------------------------------------------------
 
+
 [colors]
+black = #3f3f3f
 background = ${xrdb:background:#222}
 background-alt = ${xrdb:foreground:#edb}
 foreground = ${xrdb:foreground:#edb}
@@ -39,7 +41,7 @@ bottom = true
 tray-position = right
 tray-padding = 1
 
-background =${colors.background}
+background =${colors.black}
 foreground = ${colors.foreground}
 
 line-size = 0
@@ -63,7 +65,7 @@ height = 20
 radius = 2.0
 fixed-center = true
 
-background = ${colors.background}
+background = ${colors.black}
 foreground = ${colors.foreground}
 
 line-size = 0
@@ -103,8 +105,8 @@ format = <label-state> <label-mode>
 
 label-mode = %mode%
 label-mode-padding = 2
-label-mode-background = ${colors.tertiary}
-
+label-mode-background = ${colors.background}
+label-state-background = ${colors.background}
 index-sort = true
 wrapping-scroll = false
 
@@ -115,14 +117,14 @@ pin-workspaces = true
 ; focused = Active workspace on focused monitor
 label-focused = %index%
 label-focus-font = 4
-label-focused-background = ${colors.tertiary}
-label-focused-foreground = ${colors.secondary}
+label-focused-background = ${colors.background}
+label-focused-foreground = ${colors.foreground}
 label-focused-padding = 2
 
 ; unfocused = Inactive workspace on any monitor
 label-unfocused = %index%
 label-unfocused-font = 4
-label-unfocused-background = ${colors.tertiary}
+label-unfocused-background = ${colors.foreground}
 label-unfocused-foreground = ${colors.background}
 label-unfocused-padding = 2
 
@@ -144,10 +146,10 @@ format-online = <icon-play> <label-song> <icon-pause>
 label-offline = 🎜 mpd is offline
 format-stopped = Music Stopped
 
-label-online-background = ${colors.background-alt}
-label-online-foreground = ${colors.foreground-alt}
-label-offline-background = ${colors.background-alt}
-label-offline-foreground = ${colors.foreground-alt}
+label-online-background = ${colors.background}
+label-online-foreground = ${colors.foreground}
+label-offline-background = ${colors.background}
+label-offline-foreground = ${colors.foreground}
 
 icon-prev = 
 icon-stop = 
@@ -208,11 +210,11 @@ interval = 3.0
 format-connected = <label-connected>
 label-connected =  %essid% - %local_ip%
 label-connected-padding = 1 
-label-connected-foreground=${colors.foreground-alt}
-label-connected-background = ${colors.background-alt}
+label-connected-foreground=${colors.foreground}
+label-connected-background = ${colors.background}
 
-label-disconnected-foreground=${colors.foreground-alt}
-label-disconnected-background = ${colors.background-alt}
+label-disconnected-foreground=${colors.foreground}
+label-disconnected-background = ${colors.background}
 format-disconnected = <label-disconnected>
 label-disconnected =
 label-disconnected-padding = 1
@@ -225,11 +227,11 @@ interval = 3.0
 format-connected = <label-connected>
 label-connected =   USB %essid% - %local_ip%
 label-connected-padding = 1 
-label-connected-foreground=${colors.foreground-alt}
-label-connected-background = ${colors.background-alt}
+label-connected-foreground=${colors.foreground}
+label-connected-background = ${colors.background}
 
-label-disconnected-foreground=${colors.foreground-alt}
-label-disconnected-background = ${colors.background-alt}
+label-disconnected-foreground=${colors.foreground}
+label-disconnected-background = ${colors.background}
 format-disconnected = <label-disconnected>
 label-disconnected =
 label-disconnected-padding = 1
@@ -244,8 +246,8 @@ date-alt = " %Y-%m-%d"
 time = %H:%M:%S
 time-alt = %H:%M:%S %P
 
-format-background = ${colors.background-alt}
-format-foreground = ${colors.foreground-alt}
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
 
 label = %date% %time%
 label-padding = 2
@@ -280,14 +282,14 @@ type = internal/battery
 battery = bq2700-0
 full-at = 98
 
-format-charging-background = ${colors.background-alt}
-format-charging-foreground = ${colors.foreground-alt}
+format-charging-background = ${colors.background}
+format-charging-foreground = ${colors.foreground}
 
-format-discharging-background = ${colors.background-alt}
-format-discharging-foreground = ${colors.foreground-alt}
+format-discharging-background = ${colors.background}
+format-discharging-foreground = ${colors.foreground}
 
-format-full-background = ${colors.background-alt}
-format-full-foreground = ${colors.foreground-alt}
+format-full-background = ${colors.background}
+format-full-foreground = ${colors.foreground}
 
 label-charging-padding = 1
 format-charging = <animation-charging> <label-charging>
@@ -301,7 +303,7 @@ format-discharging-underline = ${self.format-charging-underline}
 
 label-full-padding = 1
 format-full-prefix = "FULL "
-format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-prefix-foreground = ${colors.foreground}
 format-full-underline = ${self.format-charging-underline}
 
 ramp-capacity-0 = 
@@ -324,8 +326,8 @@ exec = cat /sys/class/power_supply/bq27200-0/capacity
 label = POW %output%%
 interval = 90
 format-padding = 1
-format-background = ${colors.background-alt}
-format-foreground = ${colors.foreground-alt}
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
 
 ;---------------------------------------------------------
 ;											 POWERLINE SYMBOLS 
@@ -336,22 +338,24 @@ format-foreground = ${colors.foreground-alt}
 type = custom/text
 content = 
 
-content-background = ${colors.background}
-content-foreground = ${colors.foreground}
+content-foreground = ${colors.foreground-alt}
 
 [module/left_section]
 type = custom/text
 content = 
 
+content-foreground = ${colors.foreground-alt}
+
 [module/left_cutout]
 type = custom/text
 content = 
 
-content-background = ${colors.background}
-content-foreground = ${colors.foreground}
+content-foreground = ${colors.foreground-alt}
 
 [module/right_cutout]
 type = custom/text
 content = 
+
+content-foreground = ${colors.foreground-alt}
 
 ; vim:ft=dosini
